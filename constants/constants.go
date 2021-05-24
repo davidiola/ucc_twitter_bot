@@ -1,0 +1,7 @@
+package constants
+
+const (
+	SPOTIFY_ID_ENV  = "SPOTIFY_ID"
+	SPOTIFY_SEC_ENV = "SPOTIFY_SECRET"
+	UCC_SHOW_ID     = "3vuV292Him90EjQ5YL4XIw"
+)
