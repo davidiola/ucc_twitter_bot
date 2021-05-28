@@ -3,10 +3,10 @@ package spotify_client
 import (
 	"context"
 	c "github.com/davidiola/ucc_twitter_bot/constants"
+	u "github.com/davidiola/ucc_twitter_bot/utils"
 	"github.com/zmb3/spotify"
 	"golang.org/x/oauth2/clientcredentials"
 	"log"
-	"os"
 )
 
 type SpotifyCl struct {
@@ -15,8 +15,8 @@ type SpotifyCl struct {
 
 func NewSpotifyCl() *SpotifyCl {
 	config := &clientcredentials.Config{
-		ClientID:     os.Getenv(c.SPOTIFY_ID_ENV),
-		ClientSecret: os.Getenv(c.SPOTIFY_SEC_ENV),
+		ClientID:     u.GetEnv(c.SPOTIFY_ID_ENV),
+		ClientSecret: u.GetEnv(c.SPOTIFY_SEC_ENV),
 		TokenURL:     spotify.TokenURL,
 	}
 	token, err := config.Token(context.Background())
@@ -55,4 +55,11 @@ func (sc *SpotifyCl) RetrieveEpisodesForID(id string) []spotify.EpisodePage {
 	}
 
 	return episodeList
+}
+
+func RetrieveLinkFromEpisode(ep spotify.EpisodePage) string {
+	if val, ok := ep.ExternalURLs[c.SPOTIFY_LINK_KEY]; ok {
+		return val
+	}
+	return ""
 }
