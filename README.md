@@ -10,4 +10,6 @@ Set appropriate API Key environment variables (see [constants](https://github.co
 
 ```go run main.go```
 
+## Twitter Account
+Tweets are being submitted by the ```@ucc__bot``` account: https://twitter.com/ucc__bot. Turn on tweet notifications for this account to be notified of new episodes minutes after release.
 
